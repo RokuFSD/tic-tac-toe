@@ -6,26 +6,33 @@
     <title>Tic Tac Toe</title>
 
     <!-- ================= CSS ================= -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <!-- ================ MAIN ==================== -->
-    <main class="main">
-      <section class="gameSettings">
-	<div class="gameSettings__box">
-	</div>
-      </section>
-      <section class="gameContainer">
-      </section>
-    </main>
     <!-- ================ PRELOAD ================ -->
     <div class="preload">
-      <h1>TIC TAC TOE</h1>
+      <h1 class="preload__title">TIC TAC TOE</h1>
       <div class="preload__effect"></div>
       <div class="preload__box"></div>
     </div>
+
+    <!-- ================ MAIN ==================== -->
+    <main class="main">
+      <section class="gameSettings">
+        <div class="playerCard">
+	  <img src="assets/images/person-svgrepo-com.svg" alt="" class="playerCard__img">
+          <input type="text" name="playerNameOne" />
+        </div>
+        <div class="playerCard">
+	  <img src="assets/images/cpu-svgrepo-com.svg" alt="" class="playerCard__img">
+          <input type="text" name="playerNameTwo" />
+        </div>
+        <button class="gameStart">Start Game</button>
+      </section>
+      <section class="gameContainer"></section>
+    </main>
     <!-- =============== FOOTER =================== -->
-    <footer class="footer">
-    </footer>
+    <footer class="footer"></footer>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
