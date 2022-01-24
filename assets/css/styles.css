@@ -151,6 +151,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  flex-basis: 50%;
 }
 
 .playerCard h3 {
@@ -192,9 +193,9 @@ h1 {
   font-weight: var(--bold-font);
   font-size: var(--normal-font-size);
   color: var(--text-color);
-  flex-basis: 30%;
   height: 3rem;
   cursor: pointer;
+  width: min(10rem, 40%);
   background: var(--primary-color);
   border: none;
   border-radius: 5px;
