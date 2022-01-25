@@ -64,13 +64,23 @@ const gameSettings = (() => {
   }
 
   const validateInput = () => {
+    playerInputs.forEach(input => {
+      if(input.value == "") return false;
+      return true;
+    })
   }
 
   const submit = () => {
+    const validation = validateInput;
+    if(validation){
+      console.log("correcto");
+    } else {
+      console.log("incorrecto");
+    }
   }
 
   //Events
-  button.addEventListener("click", hide);
+  button.addEventListener("click", submit);
   playersId.forEach(player => {
     player.addEventListener("click", changeType);
   })
