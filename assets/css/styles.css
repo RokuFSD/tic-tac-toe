@@ -9,12 +9,13 @@
   --text-color: #f5f3f4;
   --alt-text-color: #d3d3d3;
   --secondary-color: #0b090a;
+  --secondary-alt: #494e5a;
 
   /*======= Font & Typography ========== */
   --preload-family: "Anton", sans-serif;
   --body-family: "Roboto", sans-serif;
 
-  --bold-font: 500;
+  --bold-font: 700;
   --regular-font: 400;
   --light-font: 300;
 
@@ -48,7 +49,7 @@ img {
   max-width: 100%;
 }
 
-button:focus{
+button:focus {
   outline: none;
 }
 
@@ -129,11 +130,10 @@ h1 {
   box-shadow: 0 0 10px 2px var(--primary-alt);
   transform: scale(50%);
   opacity: 0;
-  transition: transform 200ms ease-out,
-	      opacity 100ms ease-out;
+  transition: transform 200ms ease-out, opacity 100ms ease-out;
 }
 
-.gameSettings--active{
+.gameSettings--active {
   transform: scale(100%);
   opacity: 1;
 }
@@ -158,8 +158,8 @@ h1 {
   color: var(--text-color);
 }
 
-.playerCard input {
-  color: var(--text-color);
+.player__name {
+  color: var(--alt-text-color);
   font-family: inherit;
   text-align: center;
   max-width: 8rem;
@@ -172,25 +172,35 @@ h1 {
   text-transform: uppercase;
 }
 
-.playerCard input::placeholder {
-  color: var(--alt-text-color);
+.player__name::placeholder {
+  color: var(--secondary-alt);
+}
+
+.player__name--cpu {
+  color: var(--primary-alt);
+  font-weight: var(--bold-font);
+  pointer-events: none;
+}
+
+.player__name--cpu::placeholder {
+  color: var(--primary-alt);
+  font-weight: var(--bold-font);
 }
 
 .playerCard__img {
   width: 6rem;
   margin: 2rem 0;
   filter: invert(100%);
-  transition: filter .2s ease-out;
+  transition: filter 0.2s ease-out;
 }
 
-.playerCard__img:hover{
+.playerCard__img:hover {
   filter: invert(50%);
 }
 
 /* Button */
 .btn {
   font-family: inherit;
-  font-weight: var(--bold-font);
   font-size: var(--normal-font-size);
   color: var(--text-color);
   height: 3rem;
