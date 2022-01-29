@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;500&display=swap");
 /*=============== VARIABLES =================== */
 :root {
+  /*======= Height ==========*/
+  --header-height: 8rem;
+
   /*======= Colors ==========*/
   --bg-color: #161a1d;
   --primary-color: #660708;
@@ -19,7 +22,7 @@
   --regular-font: 400;
   --light-font: 300;
 
-  --biggest-font-size: 3.25rem;
+  --biggest-font-size: 3rem;
   --h1-font-size: 1.5rem;
   --normal-font-size: 0.938rem;
   --small-font-size: 0.825rem;
@@ -28,6 +31,8 @@
 
 @media screen and (min-width: 725px) {
   :root {
+    --header-height: 12rem;
+
     --biggest-font-size: 4rem;
     --h1-font-size: 2.25rem;
     --normal-font-size: 1rem;
@@ -220,4 +225,72 @@ h1 {
 
 .btn:active {
   transform: scale(0.9);
+}
+
+/* ========= Game Container ======= */
+
+/* Borders */
+.border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--text-color);
+}
+
+.border-ntb {
+  border-top: none;
+  border-bottom: none;
+}
+
+.border-nlr {
+  border-left: none;
+  border-right: none;
+}
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -100%;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s ease-out;
+}
+
+.gameContainer--active {
+  top: 0;
+  visibility: visible;
+}
+
+.gameContainer__header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  font-size: var(--biggest-font-size);
+  color: var(--text-color);
+}
+
+.name {
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+  font-size: var(--h1-font-size);
+}
+
+.gameContainer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 0 20px 0 #000;
+  min-width: 95%;
+  margin: 0 auto;
+}
+
+.grid__box {
+  width: min(100%, 150px);
+  aspect-ratio: 1;
+  transition: background 0.2s ease-in;
+}
+
+.grid__box:hover {
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
