@@ -286,11 +286,18 @@ h1 {
 
 .grid__box {
   width: min(100%, 150px);
+  display: flex;
+  justify-content: center;
+  align-items:center;
   aspect-ratio: 1;
   transition: background 0.2s ease-in;
+  font-size: var(--biggest-font-size);
+  font-weight: var(--bold-font);
+  color: var(--secondary-alt);
+  cursor: pointer;
+
 }
 
 .grid__box:hover {
   background: rgba(0, 0, 0, 0.2);
-  cursor: pointer;
 }

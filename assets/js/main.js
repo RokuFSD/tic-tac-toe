@@ -8,7 +8,8 @@ const preloader = (() => {
   return { waitAnimation };
 })();
 
-const Player = (name, type) => {
+const Player = (sign, name, type) => {
+  let _sign = sign;
   let _name = name;
   let _type = type;
 
@@ -18,8 +19,11 @@ const Player = (name, type) => {
   const getType = () => {
     return _type;
   };
+  const getSign = () => {
+    return _sign;
+  };
 
-  return { getName, getType};
+  return { getName, getType, getSign };
 };
 
 const gameSettings = (() => {
@@ -90,8 +94,16 @@ const gameSettings = (() => {
 
   const submit = () => {
     if (validateInput()) {
-      setPlayer(playerInputs[0].value, playersId[0].getAttribute("aria-data"));
-      setPlayer(playerInputs[1].value, playersId[1].getAttribute("aria-data"));
+      setPlayer(
+        "X",
+        playerInputs[0].value,
+        playersId[0].getAttribute("aria-data")
+      );
+      setPlayer(
+        "O",
+        playerInputs[1].value,
+        playersId[1].getAttribute("aria-data")
+      );
       hide();
     } else {
       alert("Name can't be empty");
@@ -111,16 +123,52 @@ const gameSettings = (() => {
 const gameController = (() => {
   const mainBoard = document.querySelector(".gameContainer__grid");
   const settings = gameSettings;
+  const gridArray = new Array(9).fill("");
+  const winMoves = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 2],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
   let playerOne = "";
   let playerTwo = "";
-  
+  let actualPlayer = "";
+
   const start = () => {
     [playerOne, playerTwo] = settings.getPlayer();
+    actualPlayer = playerOne;
   };
 
   const showUp = () => {
     mainBoard.parentElement.classList.add("gameContainer--active");
   };
+
+  const getCurrentPlayerTurn = () => {
+    return actualPlayer.getSign();
+  };
+
+  const setActualPlayerTurn = (playerSign) => {
+    playerSign == "X" ? (actualPlayer = playerOne) : (actualPlayer = playerTwo);
+  };
+
+  const moveToArray = (box) => {
+    let index = Array.from(box.parentNode.children).indexOf(box);
+    gridArray[index] = box.innerHTML;
+  };
+
+  const setSign = (e) => {
+    if (e.target.innerHTML !== "") return;
+    e.target.innerHTML = getCurrentPlayerTurn();
+    moveToArray(e.target);
+    getCurrentPlayerTurn() == "X" ? setActualPlayerTurn("O") : setActualPlayerTurn("X");
+  };
+
+  mainBoard.addEventListener("click", setSign);
 
   return { showUp, start };
 })();
@@ -140,4 +188,3 @@ submitButton.addEventListener("click", () => {
     controller.start();
   }
 });
-
